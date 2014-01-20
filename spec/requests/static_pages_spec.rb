@@ -28,8 +28,16 @@ describe "Static pages" do
 
   describe "Contact page" do
     before { visit contact_path }
-
+    
+    it { should have_selector('h1', text: 'Contact') }
     it { should have_content('Contact') }
     it { should have_title(full_title('Contact')) }
   end
+
+   it "should have the right links on the layout" do
+    visit root_path #THERE'S MORE U COULD DO
+    click_link "About"
+    expect(page).to have_title(full_title('About Us'))
+  end
+
 end
